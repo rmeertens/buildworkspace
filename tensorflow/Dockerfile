@@ -48,7 +48,7 @@ RUN cd OpenCV/build && \
     make -j4 
 RUN  cd OpenCV/build &&   make install && \ 
     ldconfig
-RUN apt-get install -y imagemagick
+RUN apt-get update && apt-get install -y imagemagick
 COPY jupyter_notebook_config.py /root/.jupyter/
 COPY run_jupyter.sh /
 RUN chmod +x /run_jupyter.sh
@@ -57,6 +57,9 @@ RUN pip install fasttext tflearn scikit-image scikit-learn nltk pandas gensim pr
 RUN pip install git+https://github.com/jakevdp/JSAnimation.git
 RUN apt-get install -y swig
 RUN pip install gym[all]
+RUN apt-get install -y xvfb
+RUN jupyter nbextension enable --py --sys-prefix widgetsnbextension
+RUN pip install sk-video
 WORKDIR "/notebooks" 
 CMD ["/run_jupyter.sh"]
 
