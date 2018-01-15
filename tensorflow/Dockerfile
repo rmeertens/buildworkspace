@@ -56,10 +56,7 @@ RUN pip install Cython --install-option="--no-cython-compile"
 RUN pip install fasttext tflearn scikit-image scikit-learn nltk pandas gensim praw keras
 RUN pip install git+https://github.com/jakevdp/JSAnimation.git
 RUN apt-get install -y swig
-RUN pip install gym[all]
-RUN apt-get install -y xvfb
 RUN jupyter nbextension enable --py --sys-prefix widgetsnbextension
-RUN pip install sk-video
 WORKDIR "/notebooks" 
 CMD ["/run_jupyter.sh"]
 

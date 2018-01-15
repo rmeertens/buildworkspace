@@ -1,0 +1,16 @@
+version: '2.0'
+services: 
+  tensorflow:
+    build: tensorflow
+    ports: 
+     - "8888:8888"
+    volumes:
+     - .:/notebooks
+  tensorboard:
+    build: tensorboard
+    ports: 
+     - 6006:6006
+    volumes: 
+     - .:/notebooks
+    command: tensorboard --logdir=/notebooks/graphs
+
