@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:latest-gpu
+FROM tensorflow/tensorflow:latest-gpu-py3
 # Various Python and C/build deps
 RUN apt-get update && apt-get install -y \ 
     wget \
@@ -57,6 +57,7 @@ RUN pip install fasttext tflearn scikit-image scikit-learn nltk pandas gensim pr
 RUN pip install git+https://github.com/jakevdp/JSAnimation.git
 RUN apt-get install -y swig
 RUN jupyter nbextension enable --py --sys-prefix widgetsnbextension
+RUN pip install numpy numba scipy pandas
 WORKDIR "/notebooks" 
 CMD ["/run_jupyter.sh"]
 
